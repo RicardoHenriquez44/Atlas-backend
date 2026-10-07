@@ -19,7 +19,14 @@ const metricasRoutes = require("./routes/metricas");
 
 const app = express();
 
-app.use(cors());
+// FIX SonarQube: Ocultar cabecera X-Powered-By
+app.disable("x-powered-by");
+
+// FIX SonarQube: Limitar CORS al dominio del frontend
+app.use(cors({
+  origin: "http://localhost:5173" 
+}));
+
 app.use(express.json());
 app.use(morgan("dev"));
 

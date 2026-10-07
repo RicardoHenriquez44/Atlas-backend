@@ -1,9 +1,8 @@
 const { Pool } = require("pg");
 require("dotenv").config();
 
-const connectionString =
-  process.env.DATABASE_URL ||
-  "postgres://postgres:alone15@localhost:5432/atlas";
+// Se elimina el string hardcodeado para evitar la exposición de credenciales
+const connectionString = process.env.DATABASE_URL;
 
 const pool = new Pool({ connectionString });
 
